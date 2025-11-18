@@ -6,7 +6,7 @@ mod jwt;
 use migration::{Migrator, MigratorTrait};
 use router::RouterState;
 
-use std::{env, fs};
+use std::env;
 use argon2::{Algorithm, Argon2, Params, Version};
 use sea_orm::Database;
 use tokio::net::TcpListener;

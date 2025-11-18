@@ -4,13 +4,11 @@ use axum::{extract::State, response::{IntoResponse, Response}};
 use axum_extra::extract::CookieJar;
 use serde::Serialize;
 
-use crate::{RouterState, error::CodeError, router::authenticate};
+use crate::{RouterState, error::CodeError, router::authenticate::{self, Auth}};
 
 pub async fn route(
-    State(state): State<Arc<RouterState>>,
-    jar: CookieJar,
+    Auth(user): Auth
 ) -> Result<Response, CodeError> {
-    let user = authenticate::logic(state, jar).await?;
     let data = UserData {
         username: user.user_name,
         email: user.email
