@@ -1,0 +1,6 @@
+/target
+/test
+/.idea
+/development_env
+/compose.yml
+/.env
